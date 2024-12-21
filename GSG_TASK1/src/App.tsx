@@ -3,14 +3,14 @@ import ResultDisplay from "./componants/Results.tsx";
 import "./App.css";
 
 const App: React.FC = () => {
-  const [currentInput, setCurrentInput] = useState<string>(""); // User input
-  const [result, setResult] = useState<string | number>("0");  // Calculation result
+  const [currentInput, setCurrentInput] = useState<string>(""); 
+  const [result, setResult] = useState<string | number>("0");  
 
   const handleClick = (value: string) => {
     if (value === "=") {
       if (currentInput) {
         try {
-          const calcResult = eval(currentInput); // Caution: Use `eval` carefully.
+          const calcResult = eval(currentInput); 
           setResult(calcResult);
         } catch {
           setResult("Error");
@@ -26,9 +26,7 @@ const App: React.FC = () => {
 
   return (
     <div className="calculator">
-      {/* Result Display */}
-
-      {/* Input Display */}
+      
       <div className="input-display">
 <div>
 {currentInput || "0"}
@@ -39,7 +37,6 @@ const App: React.FC = () => {
         </div>
       </div>
 
-      {/* Buttons */}
       <div className="buttons">
         {["1", "2", "3", "4", "5", "6", "7", "8", "9", "0", "+", "-"].map((btn) => (
           <button
