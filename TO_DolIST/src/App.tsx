@@ -14,7 +14,9 @@ const App: React.FC = () => {
   const [title, setTitle] = useState("");
   const [isUrgent, setIsUrgent] = useState(false);
 
-  const handleAddTodo = () => {
+  const handleAddTodo = (e: React.FormEvent) => {
+    e.preventDefault();
+
     if (!title.trim()) {
       alert("Task title cannot be empty!");
       return;
@@ -56,7 +58,7 @@ const App: React.FC = () => {
         </h1>
 
         {/* Form Section */}
-        <div className="mb-4">
+        <form onSubmit={handleAddTodo} className="mb-4">
           <input
             type="text"
             value={title}
@@ -75,22 +77,26 @@ const App: React.FC = () => {
               <span className="text-sm text-gray-600">Mark as Urgent</span>
             </label>
             <button
-              onClick={handleAddTodo}
+              type="submit"
               className="bg-green-500 text-white px-4 py-2 rounded-md hover:bg-green-600 transition"
             >
               Add Todo
             </button>
           </div>
-        </div>
+        </form>
 
         {/* Counters Section */}
         <div className="flex justify-between mb-4">
           <div className="bg-gray-100 p-4 rounded-md text-center w-1/3">
-            <p className="text-lg font-semibold text-gray-700">{createdCount}</p>
+            <p className="text-lg font-semibold text-gray-700">
+              {createdCount}
+            </p>
             <p className="text-sm text-gray-500">Created</p>
           </div>
           <div className="bg-gray-100 p-4 rounded-md text-center w-1/3">
-            <p className="text-lg font-semibold text-gray-700">{completedCount}</p>
+            <p className="text-lg font-semibold text-gray-700">
+              {completedCount}
+            </p>
             <p className="text-sm text-gray-500">Completed</p>
           </div>
           <div className="bg-gray-100 p-4 rounded-md text-center w-1/3">
